@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "ragaas"
+version = "0.1.0"
+description = "retrieval augmented generation as a service"
+authors = ["AbinavRavi <subramathreya@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.4"
+bandit = "^1.7.8"
+xenon = "^0.9.1"
+flake8 = "^7.0.0"
+pre-commit = "^3.7.0"
+commitizen = "^3.20.0"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "0.0.1"
+version_scheme = "semver"
+version_provider = "poetry"
+update_changelog_on_bump = true
+major_version_zero = true
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
