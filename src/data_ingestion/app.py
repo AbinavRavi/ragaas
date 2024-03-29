@@ -3,6 +3,6 @@ from fastapi import FastAPI
 app = FastAPI("Ingestion endpoints")
 
 
-@app.get("/document")
-def get_document():
+@app.post("/document")
+async def get_document(file_path: str):
     pass
