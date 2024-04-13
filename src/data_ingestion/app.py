@@ -17,3 +17,8 @@ def get_documents_directory(directory_path: Directory) -> IngestionResponse:
 @app.post("/drive")
 def get_documents_from_drive(drive_link: str) -> IngestionResponse:
     pass
+
+
+@app.post("/web_link")
+def scrape_web_link() -> IngestionResponse:
+    pass

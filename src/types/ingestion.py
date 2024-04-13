@@ -14,6 +14,10 @@ class DriveLink(BaseModel):
     drive_link: str
 
 
+class WebLink(BaseModel):
+    web_link: str
+
+
 class InputDataTypes(StrEnum):
     pdf = ".pdf"
     txt = ".txt"
