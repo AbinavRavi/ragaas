@@ -11,3 +11,7 @@ class SinglePdfExtractor:
         for page in self.reader.pages:
             text += page.extract_text()
         return text
+
+
+class MultiplePdfExtractor:
+    pass
