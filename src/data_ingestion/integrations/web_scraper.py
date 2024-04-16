@@ -16,17 +16,16 @@ class LinkParser:
         except Exception as e:
             raise e
 
-    def fetch_all_pages(self) -> str:
+    async def fetch_all_pages(self) -> str:
         text = []
         current_page = self.url
         while current_page:
-            data = asyncio.run(self.fetch_data_page(current_page))
+            data = await self.fetch_data_page(current_page)
 
             soup = BeautifulSoup(data, "html.parser")
             for link in soup.find_all("a", href=True):
                 if link["href"].startswith("/"):
                     current_page = f"{self.url}{link['href']}"
-                    break
                 else:
                     current_page = None
             for script in soup(["script", "style"]):
@@ -35,5 +34,6 @@ class LinkParser:
 
         return "".join(text)
 
-    def clean_text() -> str:
-        pass
+    def clean_text(self) -> str:
+        text = asyncio.run(self.fetch_all_pages())
+        return text

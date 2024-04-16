@@ -18,6 +18,7 @@ google-auth-httplib2 = "^0.2.0"
 google-auth-oauthlib = "^1.2.0"
 beautifulsoup4 = "^4.12.3"
 aiohttp = "^3.9.4"
+streamlit = "^1.33.0"
 
 
 [tool.poetry.group.dev.dependencies]
