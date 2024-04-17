@@ -7,7 +7,7 @@ class LinkParser:
     def __init__(self, url: str) -> None:
         self.url = url
 
-    async def fetch_data_page(self, url) -> str:
+    async def __fetch_data_page(self, url) -> str:
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(url) as response:
@@ -16,11 +16,11 @@ class LinkParser:
         except Exception as e:
             raise e
 
-    async def fetch_all_pages(self) -> str:
+    async def __fetch_all_pages(self) -> str:
         text = []
         current_page = self.url
         while current_page:
-            data = await self.fetch_data_page(current_page)
+            data = await self.__fetch_data_page(current_page)
 
             soup = BeautifulSoup(data, "html.parser")
             for link in soup.find_all("a", href=True):
@@ -35,5 +35,5 @@ class LinkParser:
         return "".join(text)
 
     def clean_text(self) -> str:
-        text = asyncio.run(self.fetch_all_pages())
+        text = asyncio.run(self.__fetch_all_pages())
         return text
