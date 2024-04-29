@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from types.ingestion import SingleDocument, Directory, IngestionResponse
+from types.ingestion import SingleDocument, Directory, WebLink, IngestionResponse
+from integrations.web_scraper import LinkParser
 
 app = FastAPI("Ingestion endpoints")
 
@@ -20,5 +21,9 @@ def get_documents_from_drive(drive_link: str) -> IngestionResponse:
 
 
 @app.post("/web_link")
-def scrape_web_link() -> IngestionResponse:
-    pass
+def scrape_web_link(link: WebLink) -> IngestionResponse:
+    url = WebLink.web_link
+    parser = LinkParser(url)
+    text = parser.clean_text()
+    response = {"status": "SUCCESS", "message": text}
+    return response
